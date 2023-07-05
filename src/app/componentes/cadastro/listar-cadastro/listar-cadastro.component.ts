@@ -11,12 +11,13 @@ import { ListarCadastroService } from './listar-cadastro.service';
 export class ListarCadastroComponent implements OnInit {
   servicos! : Observable<Servico[]>;
   constructor(
-   // private listarCadastroService: ListarCadastroService
+    private listarCadastroService: ListarCadastroService
   ) { 
-    //this.servicos = listarCadastroService.listarServicos();
+    this.servicos = listarCadastroService.listarServicos();
   }
 
   ngOnInit(): void {
+    this.servicos = this.listarCadastroService.listarServicos();
   }
 
 

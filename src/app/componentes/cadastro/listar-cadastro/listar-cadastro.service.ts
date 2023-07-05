@@ -8,16 +8,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ListarCadastroService {
 
-  private apiUrl = 'http://localhost:8080/servico'; // URL da API para listar os cadastros
+  
 
   constructor(private http: HttpClient) { }
 
   listarServicos(): Observable<Servico[]> {
-    return this.http.get<Servico[]>(this.apiUrl);
+    return this.http.get<Servico[]>(`api/servicos`);
   }
 
   excluirServico(servico: Servico): Observable<Servico> {
-    return this.http.delete<Servico>(this.apiUrl + "/" + servico.id);
+    return this.http.delete<Servico>( "/" + servico.id);
   }
 
 

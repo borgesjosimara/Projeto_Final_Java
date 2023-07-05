@@ -7,6 +7,7 @@ import { RodapeComponent } from './componentes/rodape/rodape.component';
 import { CriarCadastroComponent } from './componentes/cadastro/criar-cadastro/criar-cadastro.component';
 import { FormsModule } from '@angular/forms';
 import { ListarCadastroComponent } from './componentes/cadastro/listar-cadastro/listar-cadastro.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ListarCadastroComponent } from './componentes/cadastro/listar-cadastro/
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
