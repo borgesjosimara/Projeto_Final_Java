@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { Servico } from 'src/app/model/servico';
+import { ListarCadastroService } from '../listar-cadastro/listar-cadastro.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-cadastro',
@@ -6,19 +11,37 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./criar-cadastro.component.scss'],
 })
 export class CriarCadastroComponent implements OnInit {
-  cadastro = {
-    id: '1',
-    conteudo: 'cadastro clientes',
-    autoria: 'projeto',
-    modelo: 'modelo1 ',
-  };
+  servico!: Observable<Servico[]>;
 
-  constructor() {}
+  servicoForm!: FormGroup;
+ 
 
-  ngOnInit(): void {}
+  constructor(private router : Router,private formBuilder: FormBuilder, private listarService : ListarCadastroService) { }
 
-  criarCadastro() {
-    alert('Novo cadastro criado!');
+  ngOnInit(): void {
+    this.criarFormulario();
+  }
+
+  criarFormulario(): void {
+    this.servicoForm = this.formBuilder.group({
+      nome: ['', Validators.required],
+      tipoUnha: ['', Validators.required],
+      valor: ['', Validators.required],
+      periodo: ['', Validators.required]
+    });
+  }
+  onSubmit() {
+    this.listarService.salvarServico(this.servicoForm.value).subscribe(
+      (data) => {
+        console.log('Serviço salvo com sucesso!', data);
+        this.router.navigate(['']);
+      },
+      (error) => {
+        console.log('Erro ao salvar o serviço!', error);
+      }
+    );
+   /*  redirecionar a lista de cadastro */
+      
   }
 
   Cancelar() {

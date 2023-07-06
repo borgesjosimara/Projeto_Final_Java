@@ -8,16 +8,20 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ListarCadastroService {
 
-  
+  readonly API = 'api/servicos';
 
   constructor(private http: HttpClient) { }
 
   listarServicos(): Observable<Servico[]> {
-    return this.http.get<Servico[]>(`api/servicos`);
+    return this.http.get<Servico[]>(this.API);
   }
 
   excluirServico(servico: Servico): Observable<Servico> {
-    return this.http.delete<Servico>( "/" + servico.id);
+    return this.http.delete<Servico>( this.API+"/"+ servico.id);
+  }
+
+  salvarServico(servico: Servico): Observable<Servico> {
+    return this.http.post<Servico>(this.API, servico);
   }
 
 

@@ -26,7 +26,12 @@ export class ListarCadastroComponent implements OnInit {
   
   }
 
-  excluir(){
-    alert("Excluir");
+  excluir(servico: Servico) {
+    this.listarCadastroService.excluirServico(servico).subscribe(() => {
+      console.log('Serviço excluído com sucesso');
+      this.servicos = this.listarCadastroService.listarServicos();
+    }, (error) => {
+      console.log('Erro ao excluir serviço', error);
+    });
   }
 }
