@@ -16,20 +16,20 @@
                   Nome é obrigatório.
                 </div>
               </div>
-            
+
               <div class="form-group">
                 <label for="tipoUnha">Tipo de Unha:</label>
                 <select class="form-control" id="tipoUnha" formControlName="tipoUnha">
                   <option value="">Selecione o tipo de unha</option>
                   <option value="Gel">Gel</option>
-                  <option value="Gel Forte">Gel Forte</option>
-                  <option value="Gel Premium">Gel Premium</option>
+                  <option value="Fibra">Fibra</option>
+                  <option value="Cuticulagem">Cutilagem</option>
                 </select>
                 <div *ngIf="servicoForm.get('tipoUnha')?.invalid && servicoForm.get('tipoUnha')?.touched" class="text-danger">
                   Tipo de Unha é obrigatório.
                 </div>
               </div>
-            
+
               <div class="form-group">
                 <label for="valor">Valor:</label>
                 <input type="number" class="form-control" id="valor" formControlName="valor">
@@ -37,7 +37,7 @@
                   Valor é obrigatório.
                 </div>
               </div>
-            
+
               <div class="form-group">
                 <label for="periodo">Período:</label>
                 <input type="text" class="form-control" id="periodo" formControlName="periodo">
@@ -45,10 +45,10 @@
                   Período é obrigatório.
                 </div>
               </div>
-            
+
               <button type="submit" class="btn btn-primary">Salvar</button>
             </form>
-            
+
           </div>
         </div>
       </div>
